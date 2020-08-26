@@ -28,6 +28,7 @@ body {
 .wrapper {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 /* title */
@@ -36,7 +37,6 @@ body {
 }
 
 /* rounds */
-
 .rounds-label {
   margin-right: 32px;
 }
@@ -48,6 +48,10 @@ input {
 }
 
 /* buttons */
+.wrapper.buttons {
+  margin: 32px 0;
+}
+
 .button {
   font-size: 2rem;
   font-weight: 600;
@@ -58,7 +62,7 @@ input {
   border: 2px solid #000;
   border-radius: 10%;
   padding: 4px 8px;
-  margin: 32px 16px;
+  margin: 0 16px;
 }
 
 .button:hover {
@@ -73,4 +77,19 @@ input {
 
 .score:first-child {
   margin-right: 32px;
+}
+
+@media screen and (max-width: 400px) {
+  #title {
+    font-size: 28px;
+    padding: 0 16px;
+  }
+
+  .wrapper.buttons {
+    flex-direction: column;
+  }
+
+  .button {
+    margin: 16px 0;
+  }
 }
