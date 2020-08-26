@@ -4,9 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, paper scissors</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
 
   <body>
-    <script src="script.js"></script>
+    <div id="content">
+      <h1 id="title">Rock, paper & scissors</h1>
+
+      <div class="wrapper">
+        <label class="rounds-label" for="rounds">Number of rounds</label>
+        <input id="rounds" type="number" min="1" max="20" placeholder="1" />
+      </div>
+
+      <div class="wrapper">
+        <button class="button" id="">Rock</button>
+        <button class="button" id="">Paper</button>
+        <button class="button" id="">Scissors</button>
+      </div>
+      <div class="wrapper">
+        <p class="score">Human - <span id="humanScore">0</span></p>
+        <p class="score">Computer - <span id="computerScore">0</span></p>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
   </body>
 </html>
