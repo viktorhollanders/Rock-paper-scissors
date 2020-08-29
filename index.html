@@ -11,21 +11,21 @@
     <div id="content">
       <h1 id="title">Rock, paper & scissors</h1>
 
-      <div class="wrapper">
-        <label class="rounds-label" for="rounds">Number of rounds</label>
-        <input id="rounds" type="number" min="1" max="20" placeholder="1" />
+      <div class="wrapper buttons">
+        <button class="button" value="Rock">Rock</button>
+        <button class="button" value="Paper">Paper</button>
+        <button class="button" value="Scissor">Scissor</button>
       </div>
 
-      <div class="wrapper buttons">
-        <button class="button" id="">Rock</button>
-        <button class="button" id="">Paper</button>
-        <button class="button" id="">Scissors</button>
-      </div>
       <div class="wrapper">
-        <p class="score">Human - <span id="humanScore">0</span></p>
+        <p class="score">Player - <span id="playerScore">0</span></p>
         <p class="score">Computer - <span id="computerScore">0</span></p>
       </div>
+      <div class="wrapper reset">
+        <p id="resault"></p>
+      </div>
     </div>
+
     <script src="js/script.js"></script>
   </body>
 </html>

@@ -1,56 +1,79 @@
+const buttons = document.querySelectorAll(".button");
+const playerScore = document.querySelector("#playerScore");
+const computerScore = document.querySelector("#computerScore");
+const resault = document.querySelector("#resault");
+
+let playerPoints = 0;
+let computerPoints = 0;
+
 function computerPlay() {
-  let random = Math.floor(Math.random() * 3);
-  if (random === 0) {
-    return "rock";
-  } else if (random === 1) {
-    return "paper";
-  } else if (random === 2) {
-    return "scissor";
-  }
+  const choise = ["Rock", "paper", "scissor"];
+  let random = Math.floor(Math.random() * choise.length);
+  return choise[random].toLowerCase();
 }
 
-function playRound(playerSelection, computerSelection) {
-  computerSelection = computerPlay();
+function playRound(playerSelection) {
+  const computerSelection = computerPlay();
+  playerSelection.toLowerCase();
 
   if (playerSelection === "rock" && computerSelection === "paper") {
-    return `You lose ${computerSelection} beats ${playerSelection}`;
+    computerPoints++;
+    resault.textContent = `You lose ${computerSelection} beats ${playerSelection}`;
+    computerScore.textContent = computerPoints;
   } else if (playerSelection === "rock" && computerSelection === "scissor") {
-    return `You win ${playerSelection} beats ${computerSelection}`;
+    playerPoints++;
+    resault.textContent = `You win ${playerSelection} beats ${computerSelection}`;
+    playerScore.textContent = playerPoints;
   } else if (playerSelection === "paper" && computerSelection === "scissor") {
-    return `You lose ${computerSelection} beats ${playerSelection}`;
+    computerPoints++;
+    resault.textContent = `You lose ${computerSelection} beats ${playerSelection}`;
+    computerScore.textContent = computerPoints;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    return `You win ${playerSelection} beats ${computerSelection}`;
+    playerPoints++;
+    resault.textContent = `You win ${playerSelection} beats ${computerSelection}`;
+    playerScore.textContent = playerPoints;
   } else if (playerSelection === "scissor" && computerSelection === "rock") {
-    return `You lose ${computerSelection} beats ${playerSelection}`;
+    computerPoints++;
+    resault.textContent = `You lose ${computerSelection} beats ${playerSelection}`;
+    computerScore.textContent = computerPoints;
   } else if (playerSelection === "scissor" && computerSelection === "paper") {
-    return `You win ${playerSelection} beats ${computerSelection}`;
+    playerPoints++;
+    resault.textContent = `You win ${playerSelection} beats ${computerSelection}`;
+    playerScore.textContent = playerPoints;
   } else if (playerSelection == computerSelection) {
-    return "It was a tie";
+    resault.textContent = "It was a tie";
   }
 }
 
-function game() {
-  let numberOfRounds = Number();
-  let computerScore = 0;
-  let playerScore = 0;
-  for (i = 0; i < numberOfRounds; i++) {
-    let round = playRound();
-    if (round.includes("win")) {
-      playerScore++;
-      console.log(
-        `You win, the score is player ${playerScore}, computer ${computerScore}`
-      );
-    } else if (round.includes("lose")) {
-      computerScore++;
-      console.log(
-        `You lose, the score is player ${playerScore}, computer ${computerScore}`
-      );
-    } else {
-      console.log(
-        `It was a tie, the score is player ${playerScore}, computer ${computerScore}`
-      );
-    }
+function resetGame() {
+  playerPoints = 0;
+  computerPoints = 0;
+  computerScore.textContent = 0;
+  playerScore.textContent = 0;
+  resault.textContent = "";
+}
+
+function declearWinner() {
+  function points() {
+    if (playerPoints === 5) {
+      resault.textContent = "You win";
+    } else if (computerPoints === 5)
+      resault.textContent = "The computer has beten you";
+  }
+  if (playerPoints > 5 || computerPoints > 5) {
+    resetGame();
+  } else {
+    points();
   }
 }
 
-console.log(game());
+buttons.forEach((button) => {
+  button.addEventListener("click", function (e) {
+    let playerSelection = e.target.value.toLowerCase();
+    playRound(playerSelection);
+    declearWinner();
+  });
+});
+
+// in the decler winner function we need to take in the value of the number of rounds
+// if index is les than number of rounds play
