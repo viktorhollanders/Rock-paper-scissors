@@ -57,7 +57,7 @@ function declearWinner() {
   function points() {
     if (playerPoints === 5) {
       resault.textContent = "You win";
-    } else if (computerPoints === 5)
+    } else if (computerPoints == 5)
       resault.textContent = "The computer has beten you";
   }
   if (playerPoints > 5 || computerPoints > 5) {
